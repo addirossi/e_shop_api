@@ -9,7 +9,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def to_representation(self, instance):
-        representation = super(ProductSerializer, self).to_representation(instance)
+        representation = super().to_representation(instance)
         representation['images'] = ProductImageSerializer(instance.images.all(), many=True, context=self.context).data
         return representation
 
@@ -29,7 +29,7 @@ class ProductImageSerializer(serializers.ModelSerializer):
         return url
 
     def to_representation(self, instance):
-        representation = super(ProductImageSerializer, self).to_representation(instance)
+        representation = super().to_representation(instance)
         representation['image'] = self._get_image_url(instance)
         return representation
 
